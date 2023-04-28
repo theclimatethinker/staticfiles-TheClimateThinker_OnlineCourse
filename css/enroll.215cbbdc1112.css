@@ -1,0 +1,129 @@
+body{
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.div-main-content{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+
+.heading-title {
+    font-family: 'Audiowide', cursive;
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #3a0081;
+    text-align: center;
+}
+
+.card{
+    background: none;
+    border: none;
+    width: 700px;
+    height: 700px;
+    perspective: 2500px;
+}
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+.card.flipped .content {
+    transform: rotateY(180deg);
+    transition: transform 1s;
+}
+.front, .back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+.back {
+    transform: rotateY(180deg);
+}
+
+@media only screen and (max-device-width : 600px) {
+    .div-main-content {
+        position: fixed;
+        top: 50%;
+        left: 20px;
+        right: 20px;
+        transform: translate(0, -40%);
+    }
+    .card {
+        width: 100%;
+        height: 700px;
+        perspective: 2500px;
+    }
+}
+
+.enroll-box-face {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 2px rgb(74, 74, 74);
+}
+
+.enroll-box-face .enroll-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #1ea8ed;
+}
+
+.enroll-box-face .form-floating .custom-input {
+    padding-bottom: 0px !important;
+    padding-top: 12px !important;
+}
+.enroll-box-face .custom-input {
+    outline: none !important;
+    height: 45px;
+    border: 1px solid rgb(194, 190, 190);
+    background-color: rgb(249, 249, 249);
+    letter-spacing: 1px;
+}
+.enroll-box-face .custom-input:focus {
+    border: 1px solid #09629e;
+    box-shadow: 0px 0px 3px 1px #1ea8ed;
+    background-color: rgb(238, 238, 238);
+    color: #4aa0f6;
+    /* background-color: #4aa0f6;
+    color: white;
+    border: 1px solid #09629e;
+    box-shadow: none; */
+}
+.enroll-box-face .form-floating label {
+    padding: 6px !important;
+    padding-left: 8px !important;
+}
+.enroll-box-face .form-floating {
+    margin-bottom: 12px;
+}
+
+.btn-next {
+    width: 150px;
+    background-color: #0f0081 !important;
+    color: white !important;
+}
+.btn-next:hover, .btn-next:focus{
+    background-color: #0b024d !important;
+    color: white !important;
+}
+
+#btn-enrollForm2-prev{
+    width: 150px;
+    background-color: #c84a06 !important;
+    color: white !important;
+}
+#btn-enrollForm2-prev:hover, .btn-enrollForm2-prev:focus{
+    width: 150px;
+    background-color: #c77700 !important;
+    color: white;
+}
