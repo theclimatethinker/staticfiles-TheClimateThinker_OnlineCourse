@@ -1752,46 +1752,40 @@ var is_review_checked = false;
 var is_hide_checked = false;
 var is_un_hide_checked = false;
 $(document).on('change', "#filter-reviewed", function () {
-    // $(".show-question").hide();
+    $(".show-question").hide();
     is_review_checked = $(this).is(":checked");
     if (is_review_checked) {
-        $(`.reviewed-true`).addClass('show');
-        $(`.reviewed-false`).removeClass('show');
+        $(`.reviewed-true`).show();
     }
     else {
-        $(`.reviewed-false`).addClass('show');
-        $(`.reviewed-true`).addClass('show');
+        $(".show-question").show();
     }
     if (is_hide_checked){
-        $(`.is_hide-false`).removeClass('show');
+        $(`.is_hide-false`).hide();
     }
     if (is_un_hide_checked) {
-        $(`.is_hide-true`).removeClass('show');
+        $(`.is_hide-true`).hide();
     }
 });
 $(document).on('click', "#filter_hide-hide", function () {
-    $(".show-question").removeClass('show');
-    $(`.is_hide-true`).addClass('show');
-    is_review_checked = $(this).is(":checked");
+    $(".show-question").hide();
+    $(`.is_hide-true`).show();
+    is_review_checked = $("#filter-reviewed").is(":checked");
     if (is_review_checked) {
-        $(`.reviewed-false`).removeClass('show');
+        $(`.reviewed-false`).hide();
     }
-    $("[name='filter_hide']").prop('disabled', false);
-    $(this).prop('disabled', true);
 });
 $(document).on('click', "#filter_hide-un_hide", function () {
-    $(".show-question").removeClass('show');
-    $(`.is_hide-false`).addClass('show');
-    is_review_checked = $(this).is(":checked");
+    $(".show-question").hide();
+    $(`.is_hide-false`).show();
+    is_review_checked = $("#filter-reviewed").is(":checked");
     if (is_review_checked) {
-        $(`.reviewed-false`).removeClass('show');
+        $(`.reviewed-false`).hide();
     }
-    $("[name='filter_hide']").prop('disabled', false);
-    $(this).prop('disabled', true);
 });
 
-$(document).on('click', '#form_filter_questions', function(){
-    $(".show-question").addClass('show');
+$(document).on('click', '#clear_filter-review', function(){
+    $(".show-question").show();
     is_review_checked = false;
     is_hide_checked = false;
     is_un_hide_checked = false;
