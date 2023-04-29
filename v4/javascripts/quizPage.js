@@ -10,6 +10,7 @@ var user_question_answers_global = [];
 var is_user_online = true;
 
 var input_invalidSession = $("#input-invalidSession").val();
+
 if (input_invalidSession == 'True'){
     $("#div-invalidSession").show();
 }
@@ -32,6 +33,9 @@ if (input_disqualified == "True"){
 }
 
 
+var is_all_fine = $("#is_all_fine").val();
+
+if (is_all_fine == 'True'){
 window.addEventListener('online', networkConnectionCheck);
 window.addEventListener('offline', networkConnectionCheck);
 function networkConnectionCheck(event) {
@@ -373,7 +377,6 @@ function submitAnswer({finalSubmit=false}={}){
 }
 function showResult(response){   
     $("#main_quiz_div").hide();
-    console.log(response.response)
     if(response.response_status == false){
         var myArray = new Uint32Array(1);
         crypto.getRandomValues(myArray);
@@ -715,7 +718,8 @@ $(document).on('paste', function(event){
 });
 
 function reportDisqualified(){
-     $("#disqualified_div").show();
+    showSingleButtonAlert({close:true});
+    $("#disqualified_div").show();
     $("#main_quiz_div").hide();
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
     $.ajax(
@@ -743,7 +747,9 @@ var TimeInterval;
 $(window).blur(function() {
     clearInterval(TimeInterval);
     var cnt = 0;
-    if (global_final_submit == false){
+    var check = !($("#main_quiz_div").is(":hidden")); // not hidden
+    var check2 = $("#main_quiz_div").length > 0; // not removed
+    if (check && check2){
         TimeInterval = setInterval(function () {
             cnt += 1;
             if (cnt >= 30) {
@@ -763,8 +769,11 @@ window.onfocus = function(){
     clearInterval(TimeInterval);
 }
 
- window.onbeforeunload = function(e) {
-     if ($("#main_quiz_div").length){
+window.onbeforeunload = function(e) {
+    var check = !($("#main_quiz_div").is(":hidden")); // not hidden
+    var check2 = $("#main_quiz_div").length > 0; // not removed
+    if (check2){
         return "You text is not saved!";
-     }
+    }
+}
 }

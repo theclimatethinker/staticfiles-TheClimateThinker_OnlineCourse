@@ -136,9 +136,13 @@ function dotMovingAnimation({domElement, noOfDot}={}){
 var overflowY = 'auto';
 var single_button_alert = ''
 var clickAfterFunction = undefined;
-function showSingleButtonAlert({title, message, buttonText, functionName=undefined}={}){
+function showSingleButtonAlert({title='', message='', buttonText='', functionName=undefined, close=false}={}){
     single_button_alert = document.getElementById("id_SingleButton-Alert");
     overflowY = document.body.style.overflowY;
+    if(close){
+        single_button_alert.style.display = "block";
+        document.body.style.overflowY = 'hidden';
+    }
     clickAfterFunction = functionName;
     $('#id_SingleButton-Alert-header').html(title)
     $('#id_SingleButton-Alert-message').html(message)
