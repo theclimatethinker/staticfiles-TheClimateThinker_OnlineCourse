@@ -790,6 +790,11 @@ tbody .right-column-sticky {
     box-shadow: 0px 0px 1px 1px rgb(199, 15, 15);
 }
 
+
+.table-tr-participants-data.hide{
+    display: none;
+}
+
 #sendAccountRegistrationModal .title{
     font-size: 24px;
     font-weight: 500;

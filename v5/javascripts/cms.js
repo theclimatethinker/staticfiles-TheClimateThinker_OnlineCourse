@@ -581,8 +581,6 @@ function loadAllParticipants({ participants, chapters}={}){
     var chapter_per = {};
     var is_passed = '-';
     var passed_count = 0;
-    $("#display-total-participant").html(participants.length);
-    $("#display-total-participant").data('value', participants.length);
     for (i=0; i<participants.length; i++) {
         var participant = participants[i];
         if (participant.participant_performance__status == 'Passed'){
@@ -591,18 +589,9 @@ function loadAllParticipants({ participants, chapters}={}){
         total_mark_count += participant.participant_performance__mark_obtained;
         chapters_mark[participant.participant_performance__chapter__index] = participant.participant_performance__mark_obtained;
         chapter_per[participant.participant_performance__chapter__index] = participant.participant_performance__percentage_obtained;
-        var firstCondition = false;
-        if (participants.length == 1){
-            firstCondition = true;
-        }
-        if (i != participants.length-1){
-            firstCondition = participants[i]['id'] != participants[i + 1]['id'];
-        }
-        var secondCondition = false;
-        if (i == participants.length-1 && i != 0) {
-            secondCondition =  participants[i]['id'] != participants[i - 1]['id'];
-        }
-        if ((firstCondition) || (secondCondition)){
+
+        var is_data_added = $(`#table-tr-participants-data-${participant.id}`).length > 0;
+        if (!is_data_added){
             if (Object.keys(chapters_mark).length == chapters.length){
                 is_passed = passed_count == chapters.length
             }
@@ -631,7 +620,7 @@ function loadAllParticipants({ participants, chapters}={}){
             if (participant.certificate_id != '' && participant.certificate_id != '0' && participant.certificate_id != null && participant.certificate_id != undefined){
                 certificate_link = `<a class="certificate-lnk" target="_blank" href="/certificate/${participant.certificate_id}">View Certificate</a>`
             }
-            participants_row = `<tr class="table-tr-participants-data" id="table-tr-participants-data-${participant.id}">
+            participants_row = `<tr class="table-tr-participants-data show" id="table-tr-participants-data-${participant.id}">
                 <td scope="row" class="left-column-sticky" data-td="filter_td-participant-id">${participant.participant_id}</td>
                 <td data-td="filter_td-participant-name">${participant.name}</td>
                 <td data-td="filter_td-participant-email">${participant.email}</td>
@@ -658,6 +647,9 @@ function loadAllParticipants({ participants, chapters}={}){
             addedParticipants.push(participant.id) 
         }
     }
+    var total_participants = $(`.table-tr-participants-data.show`).length;
+    $("#display-total-participant").html(total_participants);
+    $("#display-total-participant").data('value', participants.length);
 }
 
 function participantFilterSearch(){
@@ -666,9 +658,10 @@ function participantFilterSearch(){
         var target_td = $(this).data('td');
         filter_values[target_td] = String($(this).val()).toLowerCase();
     });
-    $("#table-participants-data tr").show();
+    $(".table-tr-participants-data").addClass('show');
+    $(".table-tr-participants-data").removeClass('hide');
     var total_participant_cnt = Number($("#display-total-participant").data('value'));
-    $("#table-participants-data tr").each(function (index, member) {
+    $(".table-tr-participants-data").each(function (index, member) {
         var tr_ele = $(this);
         var eleId = $(this).attr('id');
         $(`#${eleId} td`).each(function (index, member) {
@@ -676,13 +669,15 @@ function participantFilterSearch(){
             if (filter_values[ele_td] != '' && filter_values[ele_td] != undefined && filter_values[ele_td] != null) {
                 var tdString = $(this).html().toLowerCase();
                 if (!(tdString.includes(filter_values[ele_td]))) {
-                    tr_ele.hide();
+                    tr_ele.removeClass('show');
+                    tr_ele.addClass('hide');
                     total_participant_cnt -= 1;
                 }
             }
         });
     });
-    $("#display-total-participant").html(total_participant_cnt);
+    var total_participants = $(`.table-tr-participants-data.show`).length;
+    $("#display-total-participant").html(total_participants);
 }
 $(document).on('keyup', '.filter-input-participants', participantFilterSearch);
 $(document).on('change', '.filter-input-participants', participantFilterSearch);
