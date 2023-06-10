@@ -1,4 +1,4 @@
-var tab_shift_allow = 4;
+var tab_shift_allow = Number($("#tab_shift_allow").val());
 var tab_shifted = 0;
 
 var varInterval;
@@ -749,10 +749,11 @@ $(window).blur(function() {
     var cnt = 0;
     var check = !($("#main_quiz_div").is(":hidden")); // not hidden
     var check2 = $("#main_quiz_div").length > 0; // not removed
+    var out_of_tab_allow = Number($("#out_of_tab_allow").val());
     if (check && check2){
         TimeInterval = setInterval(function () {
             cnt += 1;
-            if (cnt >= 30) {
+            if (cnt >= out_of_tab_allow) {
                 reportDisqualified();
             }
         }, 1000);
