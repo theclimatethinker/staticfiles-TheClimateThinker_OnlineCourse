@@ -100,13 +100,13 @@ timer = function (targetTime = undefined) {
         }
         
         if (distance <= 900000) { //15 minutes
-            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer fa-beat text-primary" style="margin-top:10px;"></i>&nbsp;<span class="text-warning">${hours}:${minutes}:${seconds}</span>`);
+            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer fa-beat text-primary" style="margin-top:10px;"></i>&nbsp;<span class="timer-danger">${hours}:${minutes}:${seconds}</span>`);
         }
         else if (distance <= 1800000) { //30minutes
-            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer fa-beat-fade text-primary" style="margin-top:10px;"></i>&nbsp;<span class="text-warning">${hours}:${minutes}:${seconds}</span>`);
+            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer fa-beat-fade text-primary" style="margin-top:10px;"></i>&nbsp;<span class="timer-warning">${hours}:${minutes}:${seconds}</span>`);
         }
         else {
-            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer text-primary" style="margin-top:10px;"></i>&nbsp;<span class="text-success">${hours}:${minutes}:${seconds}</span>`);
+            $(".timer").html(`<i class="fa-sharp fa-solid fa-timer text-primary" style="margin-top:10px;"></i>&nbsp;<span class="timer-success">${hours}:${minutes}:${seconds}</span>`);
         }
 
         $(".loading-image-background").hide();

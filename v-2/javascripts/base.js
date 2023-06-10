@@ -140,8 +140,9 @@ function showSingleButtonAlert({title='', message='', buttonText='', functionNam
     single_button_alert = document.getElementById("id_SingleButton-Alert");
     overflowY = document.body.style.overflowY;
     if(close){
-        single_button_alert.style.display = "block";
-        document.body.style.overflowY = 'hidden';
+        single_button_alert.style.display = "none";
+        document.body.style.overflowY = overflowY;
+        return false;
     }
     clickAfterFunction = functionName;
     $('#id_SingleButton-Alert-header').html(title)

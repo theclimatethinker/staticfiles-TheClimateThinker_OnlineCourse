@@ -96,7 +96,7 @@ body{
     width: 350px;
     height: 100vh;
     padding: 5px;
-    background-color: rgb(69, 177, 239);
+    background-color: #9AD66F;
     color: white;
     margin-bottom: -100vh;
     margin-top: -77px !important;
@@ -130,7 +130,7 @@ body{
 }
 
 .top-sticky .top-head {
-    background-color: rgb(87, 27, 226);
+    background-color: #61C246;
     color: white;
     padding: 2px;
     padding-left: 20px;
@@ -280,7 +280,7 @@ body{
 }
 .question-num-box .num-box.answered{
     color: white;
-    background-color: rgb(31, 220, 63);
+    background-color: #127042;
 }
 .question-num-box .num-box.not-answered{
     color: white;
@@ -302,35 +302,39 @@ body{
 
 
 .top_banner{
-    background-color: rgb(249, 230, 60);
+    background-color: #EAEFD7;
     padding-left: 30px;
 }
 .banner-text{
-    font-family: 'Faster One', cursive;
-    font-size: 6.1vw;
-    word-spacing: 1.2vw;
-    line-height: 5vw;
-    padding-bottom: 5px;
+    font-family: 'Source Code Pro', monospace;
+    color: rgb(67, 117, 67);
+    font-size: 60px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.col-banner-img img{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 6px;
 }
 @media only screen and (max-device-width : 460px){
-    .banner-text{
+    .banner-text {
         font-size: 7vw;
+        line-height: 6vw;
+    }
+    .col-banner-img img{
+        width: 50vw !important;
     }
 }
-.col-banner-img{
-    position: relative;
-    background-color: rgb(251, 249, 247);
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
+
+.timer-danger{
+    color: red; 
 }
-@media only screen and (max-device-width : 800px){
-    .banner-img{
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
+.timer-warning{
+    color: rgb(255, 98, 0); 
+}
+.timer-success {
+    color: green;
 }
 
 .text-answer-input{
@@ -382,7 +386,7 @@ body{
     z-index: 1 !important;
 }
 .btn-question .revisit-question{
-    background-color: rgb(7, 51, 139);
+    background-color: rgb(17, 216, 143);
     color: white;
     border: none !important;
     outline: none !important;
@@ -391,10 +395,10 @@ body{
     padding-right: 5px;
 }
 .btn-question .revisit-question:hover{
-    background-color: rgb(13, 73, 194);
+    background-color: rgb(13, 194, 128);
 }
 .btn-question .revisit-question.revisit-marked{
-    background-color:  rgb(20, 89, 228);
+    background-color: rgb(90, 198, 158);
     color: #bbc8fa;
 }
 .btn-question .review-question{
