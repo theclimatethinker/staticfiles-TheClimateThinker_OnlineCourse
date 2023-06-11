@@ -316,7 +316,6 @@ function submitAnswer({finalSubmit=false}={}){
                 $("#submitting_div").show();
             }
             user_question_answers_global = user_question_answers;
-            console.log($('input[name=csrfmiddlewaretoken]').val())
             $.ajax(
             {
                 type:'POST',
@@ -721,6 +720,7 @@ function reportDisqualified(){
     showSingleButtonAlert({close:true});
     $("#disqualified_div").show();
     $("#main_quiz_div").hide();
+    $("#submitting_div").hide();
     var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
     $.ajax(
     {

@@ -200,10 +200,10 @@ body, .top-sticky, #left-panel-body, .collapse-chapter_no, .collapse-chapter_no 
     border-radius: 0px;
 }
 .chapter-selection a:hover{
-    background-color: rgb(225, 246, 205);
+    background-color: rgb(209 251 168);
 }
 .chapter-selection a[aria-expanded=true] {
-    background-color: rgb(162, 190, 255);
+    background-color: rgb(63 245 65);
 }
 .chapter-selection .card{
     border: none;
@@ -229,7 +229,7 @@ body, .top-sticky, #left-panel-body, .collapse-chapter_no, .collapse-chapter_no 
 .chapter-selection .list-group-item.active {
     color: black;
     background-color: rgb(183, 182, 182);
-    border-left: 8px solid blue;
+    border-left: 8px solid #0a9c3f;
 }
 
 
