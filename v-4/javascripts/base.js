@@ -324,7 +324,6 @@ function convertToRoman(number){
 
 function loadCountryDialCode(){
     var root_static_url = $("#static_url").val();
-    console.log(root_static_url)
     $.getJSON(`${root_static_url}json/countries.json`, function(data) {
         // JSON result in `data` variable
         sorted_data = data.sort(function(a,b){
