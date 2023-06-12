@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'Durga';
-    src: url("../font/Durga.woff2") format('woff');
+    src: url("../font/Durga.ttf") format('truetype');
 }
 
 body{
