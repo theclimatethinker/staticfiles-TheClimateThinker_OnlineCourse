@@ -575,77 +575,40 @@ function formatData(data){
 }
 function loadAllParticipants({ participants, chapters}={}){
     var participants_row = '';
-    var addedParticipants = [];
-    var total_mark_count = 0;
-    var chapters_mark = {};
-    var chapter_per = {};
-    var is_passed = '-';
-    var passed_count = 0;
     for (i=0; i<participants.length; i++) {
         var participant = participants[i];
-        if (participant.participant_performance__status == 'Passed'){
-            passed_count += 1
+        var certificate_link = ``;
+        if (participant.certificate_id != '' && participant.certificate_id != '0' && participant.certificate_id != null && participant.certificate_id != undefined){
+            certificate_link = `<a class="certificate-lnk" target="_blank" href="/certificate/${participant.certificate_id}">View Certificate</a>`
         }
-        total_mark_count += participant.participant_performance__mark_obtained;
-        chapters_mark[participant.participant_performance__chapter__index] = participant.participant_performance__mark_obtained;
-        chapter_per[participant.participant_performance__chapter__index] = participant.participant_performance__percentage_obtained;
-
-        var is_data_added = $(`#table-tr-participants-data-${participant.id}`).length > 0;
-        if (!is_data_added){
-            if (Object.keys(chapters_mark).length == chapters.length){
-                is_passed = passed_count == chapters.length
-            }
-            else{
-                if (total_mark_count == 0){
-                    total_mark_count = '';
-                }
-            }
-            var chapters_mark_td = '';
-            var chapter_per_td = '';
-            for (chapter of chapters){
-                if (chapters_mark.hasOwnProperty(chapter.index)){
-                    chapters_mark_td += `<td>${chapters_mark[chapter.index]}</td>`;
-                }
-                else{
-                    chapters_mark_td += `<td> </td>`;
-                }
-                if (chapter_per.hasOwnProperty(chapter.index)) {
-                    chapter_per_td += `<td>${chapter_per[chapter.index]}%</td>`;
-                }
-                else {
-                    chapter_per_td += `<td> </td>`;
-                }
-            }
-            var certificate_link = ``;
-            if (participant.certificate_id != '' && participant.certificate_id != '0' && participant.certificate_id != null && participant.certificate_id != undefined){
-                certificate_link = `<a class="certificate-lnk" target="_blank" href="/certificate/${participant.certificate_id}">View Certificate</a>`
-            }
-            participants_row = `<tr class="table-tr-participants-data show" id="table-tr-participants-data-${participant.id}">
-                <td scope="row" class="left-column-sticky" data-td="filter_td-participant-id">${participant.participant_id}</td>
-                <td data-td="filter_td-participant-name">${participant.name}</td>
-                <td data-td="filter_td-participant-email">${participant.email}</td>
-                <td data-td="filter_td-participant-mobile" style="white-space: nowrap;">${participant.mobile}</td>
-                <td data-td="filter_td-participant-gender">${participant.gender}</td>
-                <td data-td="filter_td-participant-age">${participant.age}</td>
-                <td data-td="filter_td-participant-occupation">${participant.occupation}</td>
-                ${chapters_mark_td}
-                <td>${total_mark_count}</td>
-                ${chapter_per_td}
-                <td data-td="filter_td-participant-status">${formatData(is_passed)}</td>
-                <td data-td="filter_td-participant-disqualified">${formatData(participant.disqualified)}</td>
-                <td>${certificate_link}</td>
-            </tr>`
-            $("#table-participants-data").append(participants_row);
-            total_mark_count = 0;
-            chapters_mark = {};
-            chapter_per = {};
-            is_passed = '-';
-            passed_count = 0;
+        chapters_mark_td = '';
+        for(key in participant['marks']){
+            chapters_mark_td += `<td class="text-center">${participant['marks'][key]}</td>`
         }
-      
-        if (!addedParticipants.includes(participant.id)) {
-            addedParticipants.push(participant.id) 
+        chapter_per_td = '';
+        for (key in participant['percentages']){
+            percent = participant['percentages'][key]
+            if(String(percent) != ' '){
+                percent = `${percent}%`
+            }
+            chapter_per_td += `<td class="text-center">${percent}</td>`
         }
+        participants_row = `<tr class="table-tr-participants-data show" id="table-tr-participants-data-${participant.id}">
+            <td scope="row" class="left-column-sticky" data-td="filter_td-participant-id">${participant.participant_id}</td>
+            <td data-td="filter_td-participant-name">${participant.name}</td>
+            <td data-td="filter_td-participant-email">${participant.email}</td>
+            <td data-td="filter_td-participant-mobile" style="white-space: nowrap;">${participant.mobile}</td>
+            <td data-td="filter_td-participant-gender">${participant.gender}</td>
+            <td data-td="filter_td-participant-age" class="text-center">${participant.age}</td>
+            <td data-td="filter_td-participant-occupation">${participant.occupation}</td>
+            ${chapters_mark_td}
+            <td class="text-center">${participant.total_mark}</td>
+            ${chapter_per_td}
+            <td data-td="filter_td-participant-status" class="text-center">${formatData(participant.passed)}</td>
+            <td data-td="filter_td-participant-disqualified" class="text-center">${formatData(participant.disqualified)}</td>
+            <td class="text-center">${certificate_link}</td>
+        </tr>`
+        $("#table-participants-data").append(participants_row);
     }
     var total_participants = $(`.table-tr-participants-data.show`).length;
     $("#display-total-participant").html(total_participants);

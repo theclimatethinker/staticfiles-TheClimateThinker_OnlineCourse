@@ -202,7 +202,6 @@ else {
     $("#breadcrumb-item-chapter").hide()
 }
 
-console.log(global_topic_arg)
 if (global_topic_id != '') {
     $(`#list-group-item-${global_topic_id}`).click();
 }

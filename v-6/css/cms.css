@@ -668,6 +668,9 @@ tbody .th, tbody .td {
     top: 0px;
     z-index: 19;
 }
+th.for-scored, th.for-percentage{
+    top: 32px !important;
+}
 .left-column-sticky {
     position: sticky !important;
     left: 0px !important;
