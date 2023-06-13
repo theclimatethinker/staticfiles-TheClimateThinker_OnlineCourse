@@ -1,6 +1,6 @@
 var tab_shift_allow = Number($("#tab_shift_allow").val());
 var tab_shifted = 0;
-
+var quiz_started = false;
 var varInterval;
 var allowedTime_global = '';
 var global_final_submit = false;
@@ -111,6 +111,7 @@ timer = function (targetTime = undefined) {
 
         $(".loading-image-background").hide();
         $('body').css('overflow-y', 'auto');
+        quiz_started = true;
 
         // after every 10 seconds submit the provisional answers
         if (cnt == 10) {
@@ -718,29 +719,31 @@ $(document).on('paste', function(event){
 
 function reportDisqualified(){
     showSingleButtonAlert({close:true});
-    $("#disqualified_div").show();
-    $("#main_quiz_div").hide();
-    $("#submitting_div").hide();
-    var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
-    $.ajax(
-    {
-        type: 'POST',
-        url: "/disqualify-participant/",
-        data: {
-            'csrfmiddlewaretoken': csrfmiddlewaretoken,
-            'participantId': $("#participant_id").val(),
-        },
-        // contentType: false,
-        // processData: true,
-        dataType: 'json',
-        cache: false,
-        success: function (response) {
-            $("#main_quiz_div").remove();
-        },
-        error: function (response) {
-            reportDisqualified();
-        }
-    });
+    if(quiz_started){
+        $("#disqualified_div").show();
+        $("#main_quiz_div").hide();
+        $("#submitting_div").hide();
+        var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+        $.ajax(
+        {
+            type: 'POST',
+            url: "/disqualify-participant/",
+            data: {
+                'csrfmiddlewaretoken': csrfmiddlewaretoken,
+                'participantId': $("#participant_id").val(),
+            },
+            // contentType: false,
+            // processData: true,
+            dataType: 'json',
+            cache: false,
+            success: function (response) {
+                $("#main_quiz_div").remove();
+            },
+            error: function (response) {
+                reportDisqualified();
+            }
+        });
+    }
 }
 
 var TimeInterval;
@@ -750,7 +753,7 @@ $(window).blur(function() {
     var check = !($("#main_quiz_div").is(":hidden")); // not hidden
     var check2 = $("#main_quiz_div").length > 0; // not removed
     var out_of_tab_allow = Number($("#out_of_tab_allow").val());
-    if (check && check2){
+    if ((check && check2) && quiz_started){
         TimeInterval = setInterval(function () {
             cnt += 1;
             if (cnt >= out_of_tab_allow) {
