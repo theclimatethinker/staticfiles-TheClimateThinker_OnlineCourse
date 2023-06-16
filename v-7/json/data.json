@@ -1,0 +1,51 @@
+
+{
+    "occupations": [
+        "Business",
+        "Student",
+        "PhD Scholar",
+        "Scientist or Researcher",
+        "Teacher or Professor",
+        "Human Right Activist",
+        "RTI Activist",
+        "Environmentalist",
+        "Social Activist",
+        "Doctor",
+        "Engineer",
+        "Defence Staff",
+        "Journalist or Reporter",
+        "Layer or Advocate",
+        "Govt. Employee",
+        "Homemaker",
+        "Worker",
+        "Nurse or Medical Stuff",
+        "Post-Doctoral Researcher",
+        "Scientific Temper and Rational Activist",
+        "Archeologist",
+        "Geologist",
+        "Artists"
+    ],
+    "languages":
+        {
+            "English": "English",
+            "Hindi": "हिंदी",
+            "Assamese": "অসমীয়া",
+            "Bengali": "বাংলা",
+            "Gujarati": "ગુજરાતી",
+            "Kannada": "ಕನ್ನಡ",
+            "Maithili": "मैथिली",
+            "Malayalam": "മലയാളം",
+            "Marathi": "मराठी",
+            "Nepali": "नेपाली",
+            "Odia": "ଓଡ଼ିଆ",
+            "Punjabi": "ਪੰਜਾਬੀ",
+            "Sanskrit": "संस्कृत",
+            "Santhali": "ᱥᱟᱱᱛᱟᱲᱤ সাওঁতালী",
+            "Sindhi": "सिन्धी ਸਿੰਧੀ",
+            "Tamil": "தமிழ்",
+            "Telugu": "తెలుగు",
+            "Urdu": "اُردُو"
+        },
+    "course_levels": ["All Level", "Beginer", "Intermidiate", "Advanced"],
+    "genders": ["Male", "Female", "Third Gender", "Prefer not to say"]
+}

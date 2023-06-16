@@ -1,0 +1,312 @@
+:root {
+    --sm_min: 460px;
+    --sm_start: 461px;
+
+    --md_min: 613px;
+    --md_start: 614px;
+
+    --lg_min: 792px;
+    --lg_start: 793px;
+
+    --xl_min: 959px;
+    --xl_start: 960px;
+  }
+
+
+.modal .modal-dialog{
+    margin-top: 70px;
+}
+
+.modal-open{
+    padding-right: 9px !important;
+    overflow: hidden !important;
+}
+/* body::-webkit-scrollbar{
+    width: 20px;
+} */
+body{
+    overflow-x:hidden;
+    min-height: 100vh;
+}
+
+.btn, .btn-close{
+    outline: none !important;
+    border: none;
+}
+
+.modal-header{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.modal-footer{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.btn:disabled{
+    cursor: not-allowed !important;
+}
+.disabled{
+    cursor: not-allowed !important;
+}
+button:disabled{
+    cursor: not-allowed !important;
+}
+
+.text-capitalize{
+    text-transform: capitalize !important;
+}
+.text-uppercase{
+    text-transform: uppercase !important;
+}
+.text-lowercase{
+    text-transform: lowercase !important;
+}
+
+/* The Modal (background) */
+.Alert {
+    z-index: 2000 !important;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.SingleButton-Alert-content {
+    z-index: 2000 !important;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    border: 2px solid #f39f9f;
+    width: 80%; /* Could be more or less, depending on screen size */
+    transform: translate(-50%, -50%);
+    background-color: #f6f4f4;
+}
+@media only screen and (min-device-width : 700px)
+{
+    .SingleButton-Alert-content {
+        width: 500px;
+    }
+}
+.SingleButton-Alert-header{
+    padding: 2px;
+    padding-left: 10px;
+    background-color: #ed4141;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+}
+.SingleButton-Alert-body{
+    padding: 10px;
+    padding-bottom: 8px;
+    text-align: center;
+    line-height: 20px;
+}
+.SingleButton-Alert-footer{
+    text-align: center;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.SingleButton-Alert-button{
+    background-color: #b61818;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    border: none;
+    outline: none;
+}
+.SingleButton-Alert-button:hover{
+    background-color: #ba3a3a;
+}
+
+.TwoButton-Alert-content {
+    z-index: 2000 !important;
+    position: fixed;
+    background-color: #fefefe;
+    top: 40%;
+    left: 50%;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0px !important;
+    width: 80%; /* Could be more or less, depending on screen size */
+    transform: translate(-50%, -50%);
+}
+@media only screen and (min-device-width : 700px)
+{
+    .TwoButton-Alert-content {
+        width: 400px;
+    }
+}
+.TwoButton-Alert-header{
+    padding: 2px;
+    padding-left: 10px;
+    background-color: #3073bb;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+}
+.TwoButton-Alert-body{
+    padding: 10px !important;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    text-align: center;
+    font-size: 17px;
+}
+.TwoButton-Alert-footer{
+    text-align: center;
+}
+.TwoButton-Alert-button-close{
+    background-color: #eeeeee;
+    padding: 8px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #f9002c;
+    border: 1px solid #c4c3c3;
+    outline: none;
+    width: 100% !important;
+    font-weight: 450;
+    margin: 0px !important;
+    border-bottom-left-radius: 5px !important;
+}
+.TwoButton-Alert-button-close:hover{
+    background-color: #e6e3e3;
+}
+.TwoButton-Alert-button-okay{
+    background-color: #eeeeee;
+    padding: 8px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #006cd8;
+    border: 1px solid #c4c3c3;
+    outline: none;
+    width: 100% !important;
+    font-weight: 450;
+    margin: 0px !important;
+    border-bottom-right-radius: 5px !important;
+}
+.TwoButton-Alert-button-okay:hover{
+    background-color: #e6e3e3;
+}
+
+
+.modal{
+    overflow-y: hidden !important;
+}
+
+
+table {
+    counter-reset: serial-number;  /* Set the serial number counter to 0 */
+}
+.table-serial-no:before {
+    counter-increment: serial-number;  /* Increment the serial number counter */
+    content: counter(serial-number);  /* Display the counter */
+}
+.table-serial-no{
+    font-weight: bold;
+}
+
+
+.table-column{
+    text-align: center !important;
+    padding-right: 30px !important;
+}
+.table-sort-icon{
+    position: absolute !important;
+    margin-top: 5px !important;
+    right:3px !important;
+}
+.table-sort-column{
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.table-sort-icon.fas.fa-sort{
+    color: rgba(255, 255, 255, 0.54);
+}
+
+
+.select-dropdown .dropdown-menu-lists::-webkit-scrollbar {
+    width: 10px;
+}
+.select-dropdown .dropdown-menu-lists::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.select-dropdown .dropdown-menu-lists::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(186, 186, 186);
+}
+.select-dropdown .dropdown-menu-lists::-webkit-scrollbar-thumb:hover {
+    border-radius: 10px;
+    background-color: rgb(86, 86, 86);
+}
+
+.select-country-code-dropdown .dropdown-menu{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 10px !important;
+}
+.select-country-code-dropdown .dropdown-menu-lists {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+}
+.select-dropdown-input-search{
+    box-shadow: none !important;
+    border: 1px solid rgb(125, 125, 125) !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+
+}
+.select-dropdown-input-search:focus {
+    box-shadow: none !important;
+    border: 2px solid rgb(52, 52, 52) !important;
+}
+
+.select-dropdown .dropdown-menu-lists{
+    overflow: auto;
+    height: 200px;
+}
+.select-dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: rgb(219, 246, 246);
+    color: black;
+}
+.select-dropdown .dropdown-menu .dropdown-item.active, .select-dropdown .dropdown-menu .dropdown-item:focus {
+    background-color: rgb(30, 118, 233);
+    color: white;
+}
+
+.country-flag-icon{
+    height: 20px;
+    width: 25px;
+    border: 1px solid black;
+}
+
+.select-dropdown .dropdown-menu{
+    padding: 0px;
+}
+.select-country-code-dropdown{
+    position: relative;
+}
+.select-country-code-dropdown .selected-item-icon{
+    position: absolute;
+    top: 12px;
+    left: 5px;
+}
+.select-country-code-dropdown .select-dropdown-display-label:not(:placeholder-shown) {
+    padding-left: 32px;
+}
+
+#tui-image-editor-modal #tui-image-editor{
+    height: 500px !important;
+}
