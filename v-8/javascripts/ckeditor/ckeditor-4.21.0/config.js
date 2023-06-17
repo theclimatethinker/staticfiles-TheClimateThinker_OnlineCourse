@@ -68,10 +68,10 @@ CKEDITOR.on('dialogDefinition', function (ev) {
 		}
 		fileChooserDef.onChange = function (ev) {
 			if (!image_modified){
-				var dialog = CKEDITOR.dialog.getCurrent();
-				var elements = dialog.getElement()
-				var editor = dialog.getParentEditor().name
-				var tUrl = this.getDialog().getContentElement('Upload', 'upload'); // Tab, Input/Button
+				// var dialog = CKEDITOR.dialog.getCurrent();
+				// var elements = dialog.getElement()
+				// var editor = dialog.getParentEditor().name
+				// var tUrl = this.getDialog().getContentElement('Upload', 'upload'); // Tab, Input/Button
 				let iframe_id = this.getElement().find('iframe').getItem(0).getId()
 				let iframe = document.getElementById(iframe_id)
 				let iframe_innerDoc = iframe.contentDocument || iframe.contentWindow.document;
