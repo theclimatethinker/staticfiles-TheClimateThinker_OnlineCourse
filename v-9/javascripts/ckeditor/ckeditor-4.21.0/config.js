@@ -18,17 +18,16 @@ CKEDITOR.editorConfig = function( config ) {
 		'embed',
 		'embedsemantic',
 		'autoembed',
-		'ckeditor_wiris'
+		'ckeditor_wiris',
 	];
 	config.clipboard_handleImages = false;
-	config.filebrowserBrowseUrl = '/ckfinder/?command=QuickUpload';
-	config.filebrowserImageBrowseUrl = '/ckfinder/?command=QuickUpload&type=Images';
-    // config.filebrowserImageBrowseUrl = '/ckfinder.html?type=Images';
+	// config.filebrowserBrowseUrl = '/ckfinder/?command=QuickUpload';
+	// config.filebrowserImageBrowseUrl = '/ckfinder/?command=QuickUpload&type=Images';
     config.filebrowserUploadUrl = '/ckEditorFileUploader/';
     config.filebrowserImageUploadUrl = '/ckEditorFileUploader/';
 	config.uploadUrl = '/ckEditorFileUploader/';
-    config.filebrowserWindowWidth = '1000';
-    config.filebrowserWindowHeight = '700';
+    config.filebrowserWindowWidth = '100';
+    config.filebrowserWindowHeight = '100';
 
 	config.allowedContent = true;
     config.disableNativeSpellChecker = false;
@@ -54,13 +53,9 @@ CKEDITOR.on('dialogDefinition', function (ev) {
 		var uploadTab = dialogDefinition.getContents('Upload'); // get tab of the dialog 
 		// Get the "Choose file" input definition.
 		var fileChooserDef = uploadTab.get('upload');
-		// Get the "Send it to the Server" button definition, and hide that button.
 		var sendButtonDef = uploadTab.get('uploadButton');
 		sendButtonDef.label = 'Upload';
 
-		// sendButtonDef.onClick = function(){
-
-		// }
 
 		// When a file is chosen, open the edit modal.
 		fileChooserDef.onClick = function(ev){

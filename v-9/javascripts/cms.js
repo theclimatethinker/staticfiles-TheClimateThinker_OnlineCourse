@@ -566,26 +566,55 @@ function formatData(data){
     }
     return data
 }
+
 function loadAllParticipants({ participants, chapters}={}){
     var participants_row = '';
     for (i=0; i<participants.length; i++) {
         var participant = participants[i];
+        console.log(participant)
         var certificate_link = ``;
         if (participant.certificate_id != '' && participant.certificate_id != '0' && participant.certificate_id != null && participant.certificate_id != undefined){
             certificate_link = `<a class="certificate-lnk" target="_blank" href="/certificate/${participant.certificate_id}">View Certificate</a>`
         }
         chapters_mark_td = '';
-        for(key in participant['marks']){
-            chapters_mark_td += `<td class="text-center">${participant['marks'][key]}</td>`
-        }
         chapter_per_td = '';
-        for (key in participant['percentages']){
-            percent = participant['percentages'][key]
-            if(String(percent) != ' '){
-                percent = `${percent}%`
+        for (ch of participant['chapter_records']){
+            pass_status = ch['status']
+            percentange = ch['percentage']
+            status_text_color = ''
+            if (pass_status == 'Passed'){
+                status_text_color = 'text-passed'
             }
-            chapter_per_td += `<td class="text-center">${percent}</td>`
+            else if (pass_status == 'Failed') {
+                status_text_color = 'text-failed'
+            }
+            if (String(percentange) != ' ') {
+                percentange = `${percentange}%`
+            }
+            chapters_mark_td += `<td class="text-center ${status_text_color}">${ch['mark']}</td>`;
+            chapter_per_td += `<td class="text-center ${status_text_color}">${percentange}</td>`;
         }
+        if (participant.passed == 'Passed') {
+            status_text_color = 'text-passed'
+        }
+        else if (participant.passed == 'Failed') {
+            status_text_color = 'text-failed'
+        }
+        else {
+            status_text_color = ''
+        }
+        total_score = `<td class="text-center ${status_text_color}">${participant.total_mark}</td>`;
+        is_passed = `<td data-td="filter_td-participant-status" class="text-center ${status_text_color}">${participant.passed}</td>`;
+        if (participant.disqualified == 'Yes') {
+            status_text_color = 'text-failed'
+        }
+        else if (participant.disqualified == 'No') {
+            status_text_color = ''
+        }
+        else {
+            status_text_color = ''
+        }
+        is_disqualified = `<td data-td="filter_td-participant-disqualified" class="text-center ${status_text_color}">${participant.disqualified}</td>`;
         participants_row = `<tr class="table-tr-participants-data show" id="table-tr-participants-data-${participant.id}">
             <td scope="row" class="left-column-sticky" data-td="filter_td-participant-id">${participant.participant_id}</td>
             <td data-td="filter_td-participant-name">${participant.name}</td>
@@ -595,10 +624,10 @@ function loadAllParticipants({ participants, chapters}={}){
             <td data-td="filter_td-participant-age" class="text-center">${participant.age}</td>
             <td data-td="filter_td-participant-occupation">${participant.occupation}</td>
             ${chapters_mark_td}
-            <td class="text-center">${participant.total_mark}</td>
+            ${total_score}
             ${chapter_per_td}
-            <td data-td="filter_td-participant-status" class="text-center">${formatData(participant.passed)}</td>
-            <td data-td="filter_td-participant-disqualified" class="text-center">${formatData(participant.disqualified)}</td>
+            ${is_passed}
+            ${is_disqualified}
             <td class="text-center">${certificate_link}</td>
         </tr>`
         $("#table-participants-data").append(participants_row);

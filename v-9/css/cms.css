@@ -58,15 +58,15 @@ body {
 }
 #cms-offcanvas-body::-webkit-scrollbar-track {
     border-radius: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(79, 143, 71);
 }
 #cms-offcanvas-body::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: rgb(93, 69, 134);
+    background-color: rgb(56, 108, 49);
 }
 #cms-offcanvas-body::-webkit-scrollbar-thumb:hover {
     border-radius: 10px;
-    background-color: rgb(87, 70, 116);
+    background-color: rgb(36, 79, 31);
 }
 
 #cms-offcanvas{
@@ -683,7 +683,7 @@ thead .left-column-sticky, thead .left-column-sticky-1 {
     z-index: 20 !important;
 }
 tbody .left-column-sticky, tbody .left-column-sticky-2 {
-    background-color: #f3f4f3 !important;
+    background-color: #f3f4f3;
     z-index: 18 !important;
 }
 
@@ -712,7 +712,7 @@ tbody .right-column-sticky {
     height: 80vh;
 }
 #div_table-participants thead th {
-    background-color: #612c95;
+    background-color: #22bb67;
     color: white;
 }
 #div_table-admins thead th {
@@ -828,4 +828,15 @@ tbody .right-column-sticky {
     direction: none !important;
     text-decoration: none !important;
     color: rgb(0, 0, 104);
+}
+
+.text-passed{
+    color: #268700 !important;
+}
+.text-failed {
+    color: #ff0000 !important;
+}
+
+#div_table-participants .table-hover tbody tr:hover td{
+    background-color: #96e4d0 !important;
 }
