@@ -310,3 +310,7 @@ table {
 #tui-image-editor-modal #tui-image-editor{
     height: 500px !important;
 }
+
+.cke_editable img, .cke_editable figure{
+    padding-right: 10px !important;
+}
