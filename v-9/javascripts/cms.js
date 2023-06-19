@@ -571,7 +571,6 @@ function loadAllParticipants({ participants, chapters}={}){
     var participants_row = '';
     for (i=0; i<participants.length; i++) {
         var participant = participants[i];
-        console.log(participant)
         var certificate_link = ``;
         if (participant.certificate_id != '' && participant.certificate_id != '0' && participant.certificate_id != null && participant.certificate_id != undefined){
             certificate_link = `<a class="certificate-lnk" target="_blank" href="/certificate/${participant.certificate_id}">View Certificate</a>`
@@ -603,7 +602,12 @@ function loadAllParticipants({ participants, chapters}={}){
         else {
             status_text_color = ''
         }
+        total_percent = participant.total_percent
+        if (String(total_percent) != '-') {
+            total_percent = `${participant.total_percent}%`
+        }
         total_score = `<td class="text-center ${status_text_color}">${participant.total_mark}</td>`;
+        total_percent = `<td class="text-center ${status_text_color}">${total_percent}</td>`;
         is_passed = `<td data-td="filter_td-participant-status" class="text-center ${status_text_color}">${participant.passed}</td>`;
         if (participant.disqualified == 'Yes') {
             status_text_color = 'text-failed'
@@ -626,6 +630,7 @@ function loadAllParticipants({ participants, chapters}={}){
             ${chapters_mark_td}
             ${total_score}
             ${chapter_per_td}
+            ${total_percent}
             ${is_passed}
             ${is_disqualified}
             <td class="text-center">${certificate_link}</td>
