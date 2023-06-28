@@ -633,6 +633,7 @@ function loadAllParticipants({ participants, chapters}={}){
             ${total_percent}
             ${is_passed}
             ${is_disqualified}
+            <td class="text-center">${formatDateTime(participant.enrolled_on)}</td>
             <td class="text-center">${certificate_link}</td>
         </tr>`
         $("#table-participants-data").append(participants_row);
