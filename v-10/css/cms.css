@@ -840,3 +840,9 @@ tbody .right-column-sticky {
 #div_table-participants .table-hover tbody tr:hover td{
     background-color: #96e4d0 !important;
 }
+
+.cke_editor_welcomeContent_editor .cke_editable, .cke_editor_welcomeContent_editor .cke_editable span, .cke_editor_welcomeContent_editor .cke_editable p,
+.editTopicContent_editor+.cke_ltr .cke_editable, .editTopicContent_editor+.cke_ltr .cke_editable span, .editTopicContent_editor+.cke_ltr .cke_editable p,
+.addTopicContent_editor+.cke_ltr .cke_editable, .addTopicContent_editor+.cke_ltr .cke_editable span, .addTopicContent_editor+.cke_ltr .cke_editable p{
+    background-color: rgb(242, 255, 229);
+}

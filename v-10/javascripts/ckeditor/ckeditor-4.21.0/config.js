@@ -53,7 +53,7 @@ var current_opened_dialog;
 // 	console.log(data)
 // 	if (response[1]) {
 // 		// An error occurred during upload.
-// 		data.message = response[1];
+// 		data.message =  response[1];
 // 		evt.cancel();
 // 	} else {
 // 		data.url = response[0];
