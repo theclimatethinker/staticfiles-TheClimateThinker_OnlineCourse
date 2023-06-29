@@ -14,14 +14,15 @@ var conf = {
     width: '100%'
 }
 // var conf = Object.assign({}, global_ckeditor_conf, conf);
-var instruction_ckeditor = CKEDITOR.replace('instruction_editor', conf);
+// var instruction_ckeditor = addCkEditor('instruction_editor', conf);
+var instruction_ckeditor = addCkEditor('instruction_editor', conf)
 
 var conf = {
     height: '65vh',
     width: '100%'
 }
 // var conf = Object.assign({}, global_ckeditor_conf, conf);
-var welcomeContent_editor = CKEDITOR.replace('welcomeContent_editor', conf);
+var welcomeContent_editor = addCkEditor('welcomeContent_editor', conf);
 
 var conf = {
     height: '80px',
@@ -29,7 +30,7 @@ var conf = {
     editorplaceholder: "Enter the question here...."
 }
 // var conf = Object.assign({}, global_ckeditor_conf, conf);
-var newQuestion_editor = CKEDITOR.replace('newQuestion_editor', conf);
+var newQuestion_editor = addCkEditor('newQuestion_editor', conf);
 
 var editQuestion_editor = {}
 var editQuestion_editor_conf = conf
@@ -236,7 +237,7 @@ function loadAllChapters({ chaptersInfo = [], topicsInfo=[], onlyAddTopic=false}
                 $(`#edit_chapter-${topic.id}`).val(chapter.name);
                 var eleId = `editTopicContent_editor-${topic.id}`;
                 var dataId = topic.id;
-                editTopicContent_editor[dataId] = CKEDITOR.replace(eleId, editTopicContent_editor_conf);
+                editTopicContent_editor[dataId] = addCkEditor(eleId, editTopicContent_editor_conf);
             }
         }
         if (!onlyAddTopic){
@@ -293,7 +294,7 @@ function loadAllChapters({ chaptersInfo = [], topicsInfo=[], onlyAddTopic=false}
             $(`#add_chapter-${chapter.id}`).val(chapter.name);
             var eleId = `addTopicContent_editor-${chapter.id}`;
             var dataId = chapter.id;
-            addTopicContent_editor[dataId] = CKEDITOR.replace(eleId, addTopicContent_editor_conf);
+            addTopicContent_editor[dataId] = addCkEditor(eleId, addTopicContent_editor_conf);
         }
         if(onlyAddTopic){
             $(`#topic_list_inner-${ChapterId}`).append(topicsList);
@@ -547,7 +548,7 @@ function loadAllQuestion({questions_sets,  addNewOne=false}={}){
             $(".all_modals").append(questionReviews_modal)
             var eleId = `editQuestion_editor-${question.id}`;
             var dataId = question.id;
-            editQuestion_editor[dataId] = CKEDITOR.replace(eleId, editQuestion_editor_conf);
+            editQuestion_editor[dataId] = addCkEditor(eleId, editQuestion_editor_conf);
         }
     }
     updateQuestionSl(updateOptionSlNo=true);
@@ -1792,3 +1793,13 @@ $(window).on('load', function () {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 });
+
+// fire a Create event
+$('.cke_editable').on('create', '> img', function (event) {
+    console.log(event.currentTarget)
+    event.$currentTarget.addClass('img-fluid');
+});
+
+$('.cke_editable').on('keyup', function(event){
+    console.log(this)
+})

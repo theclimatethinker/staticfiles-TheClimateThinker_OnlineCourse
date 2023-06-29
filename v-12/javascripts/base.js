@@ -337,7 +337,6 @@ function loadCountryDialCode(){
     });
 }
 loadCountryDialCode();
-
 $(document).on('keyup', '.select-dropdown .select-dropdown-input-search', function(){
     var search_value = $(this).val().toLowerCase();
     var parentElement = $(this).parent('.dropdown-menu');
@@ -349,8 +348,7 @@ $(document).on('keyup', '.select-dropdown .select-dropdown-input-search', functi
         }
     });
 });
-
-$(document).on('click', ".select-dropdown .dropdown-menu .dropdown-item", function(){
+$(document).on('click', ".select-country-code-dropdown .dropdown-menu .dropdown-item", function(){
     var parent_element = $(this).parent('.dropdown-menu-lists').parent(".dropdown-menu").parent('.select-dropdown');
     parent_element.children('.dropdown-menu').children('.dropdown-item').removeClass('active');
     $(this).addClass("active");
@@ -364,6 +362,9 @@ $(document).on('click', ".select-dropdown .dropdown-menu .dropdown-item", functi
     var img_icon = $(this).children('img').attr('src');
     $(".selected-item-icon").remove();
     country_code_dropdown.append(`<img class="country-flag-icon selected-item-icon" src="${img_icon}"/>`)
+});
+$(document).on('click', ".select-dropdown .select-dropdown-display-label", function(){
+    $(".select-dropdown .select-dropdown-input-search").focus();
 });
 
 var timeZoneOffsetValue = new Date().getTimezoneOffset();
@@ -394,4 +395,24 @@ var imageEditor = new tui.ImageEditor(document.querySelector('#tui-image-editor'
 });
 window.onresize = function () {
     imageEditor.ui.resizeEditor();
+}
+
+function addCkEditor(targrt_id, conf = null) {
+    var instance_editor;
+    if (conf == null) {
+        instance_editor = CKEDITOR.replace(targrt_id);
+    }
+    else {
+        instance_editor = CKEDITOR.replace(targrt_id, conf);
+    }
+    instance_editor.on('insertElement', function (event) {
+        var element = event.data;
+        if (element.getName() == 'img') {
+            element.addClass('img-fluid');
+        }
+        $(element.$).find('img').each(function (index, member) {
+            $(this).addClass('img-fluid')
+        });
+    });
+    return instance_editor;
 }

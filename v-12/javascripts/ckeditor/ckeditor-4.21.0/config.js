@@ -2,13 +2,25 @@
 // @license Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
 // For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
 
+CKEDITOR.stylesSet.add('my_styles', [
+	{
+		name: 'Responsive Inage',
+		element: 'img',
+		// attributes: { 'class': 'img-fluid' },
+		styles: {
+			'max-width': '100%',
+			'height': 'auto'
+		}
+	},
+]);
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
+	// config.stylesSet = 'my_styles';
 	config.skin = 'moono-lisa';
-	config.removePlugins = ["newpage", "forms", "save", "spreadsheet",];
+	config.removePlugins = ["newpage", "forms", "save", "spreadsheet", "image", "easyimage", "cloudservices", "exportpdf"];
 	config.extraPlugins = [
 		// "allowsave",
 		// "autocorrect"
@@ -35,6 +47,9 @@ CKEDITOR.editorConfig = function( config ) {
     config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML';
 	config.embed_provider = '//flickr.com/services/oembed?url={url}&callback={callback}';
 	config.autoEmbed_widget = 'embed';
+
+	// config.cloudServices_tokenUrl = 'https://example.com/cs-token-endpoint',
+    // config.cloudServices_uploadUrl= 'https://your-organization-id.cke-cs.com/easyimage/upload/'
 };
 
 var image_modified = false

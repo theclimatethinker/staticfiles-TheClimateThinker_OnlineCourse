@@ -1,11 +1,20 @@
 body{
     overflow-y: hidden;
 }
-body, .top-sticky, #left-panel-body, .collapse-chapter_no, .collapse-chapter_no .card-body, .collapse-chapter_no .list-group a, .topic_content, .topic_content span, .topic_content p{
+body, .top-sticky, .left-panel, .collapse-chapter_no, .collapse-chapter_no .card-body, .collapse-chapter_no .list-group a, .topic_content, .topic_content span, .topic_content p{
     background-color: rgb(242, 255, 229);
 }
-.chapter-selection a{
-    background-color: rgb(225, 251, 198);
+.top-sticky .top-head{
+    background-color: rgb(232, 251, 211);
+}
+.chapter-selection .collapse_class{
+    background-color: rgb(214, 251, 174);
+}
+.chapter-selection .collapse_class:not(.collapse_class-1) {
+    border-top: 5px solid white !important;
+}
+.chapter-selection .collapse_class:hover {
+    background-color: rgb(198, 246, 150);
 }
 
 .loading-image-background,.loading-image-background-1{
@@ -61,6 +70,7 @@ body, .top-sticky, #left-panel-body, .collapse-chapter_no, .collapse-chapter_no 
 }
 
 .left-panel::-webkit-scrollbar {
+    height: 10px;
     width: 10px;
 }
 
@@ -198,9 +208,6 @@ body, .top-sticky, #left-panel-body, .collapse-chapter_no, .collapse-chapter_no 
     padding-top: 15px;
     /* background-color: white; */
     border-radius: 0px;
-}
-.chapter-selection a:hover{
-    background-color: rgb(209 251 168);
 }
 .chapter-selection a[aria-expanded=true] {
     background-color: rgb(63 245 65);

@@ -54,6 +54,7 @@ body {
 }
 
 #cms-offcanvas-body::-webkit-scrollbar{
+    height: 10px;
     width: 10px;
 }
 #cms-offcanvas-body::-webkit-scrollbar-track {
@@ -87,6 +88,7 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar{
+    height: 10px;
     width: 10px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {

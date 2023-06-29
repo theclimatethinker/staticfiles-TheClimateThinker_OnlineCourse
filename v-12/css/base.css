@@ -237,6 +237,7 @@ table {
 
 
 .select-dropdown .dropdown-menu-lists::-webkit-scrollbar {
+    height: 10px;
     width: 10px;
 }
 .select-dropdown .dropdown-menu-lists::-webkit-scrollbar-track {
@@ -256,6 +257,14 @@ table {
     padding-left: 10px !important;
     padding-right: 10px !important;
     padding-top: 10px !important;
+    width: 400px;
+    /* min-width: 300px; */
+}
+@media only screen and (max-device-width : 300px) {
+    .TwoButton-Alert-content {
+        width: 100%;
+        min-width: none;
+    }
 }
 .select-country-code-dropdown .dropdown-menu-lists {
     margin-left: -10px !important;
@@ -276,6 +285,9 @@ table {
 .select-dropdown .dropdown-menu-lists{
     overflow: auto;
     height: 200px;
+}
+.select-dropdown .dropdown-menu .dropdown-item {
+    width: 100%;
 }
 .select-dropdown .dropdown-menu .dropdown-item:hover {
     background-color: rgb(219, 246, 246);

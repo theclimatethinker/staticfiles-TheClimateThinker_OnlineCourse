@@ -52,6 +52,12 @@ blockquote
 	border-right-width: 5px;
 }
 
+img{
+	max-width: 100%;
+	height: auto;
+	border: 10px solid blue !important;
+}
+
 a
 {
 	color: #0782C1;
