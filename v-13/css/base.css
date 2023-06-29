@@ -260,9 +260,9 @@ table {
     width: 400px;
     /* min-width: 300px; */
 }
-@media only screen and (max-device-width : 300px) {
-    .TwoButton-Alert-content {
-        width: 100%;
+@media only screen and (max-device-width : 400px) {
+    .select-country-code-dropdown .dropdown-menu {
+        width: 100vw;
         min-width: none;
     }
 }

@@ -209,8 +209,8 @@ body, .top-sticky, .left-panel, .collapse-chapter_no, .collapse-chapter_no .card
     /* background-color: white; */
     border-radius: 0px;
 }
-.chapter-selection a[aria-expanded=true] {
-    background-color: rgb(63 245 65);
+.chapter-selection .collapse_class[aria-expanded=true] {
+    background-color: rgb(63 245 65) !important;
 }
 .chapter-selection .card{
     border: none;
