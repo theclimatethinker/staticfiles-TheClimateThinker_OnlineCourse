@@ -679,7 +679,7 @@ function loadAllAdmins({ admins}={}){
     for(admin of admins){
         var remove_btn = '';
         if (admin.Username__username != $("#logged_in_username").val()){
-            remove_btn = `<button type="button" class="btn text-danger btn-remove-admin" data-value="${admin.id}" style="font-weight:bold">Remove</button>`
+            remove_btn = `<button type="button" class="btn text-danger btn-remove-admin" data-username="${admin.Username__username}" data-value="${admin.id}" style="font-weight:bold">Remove</button>`
         }
         admins_row = `<tr class="table-tr-admins-data" id="table-tr-admins-data-${admin.id}">
                 <td scope="row" class="left-column-sticky" data-td="filter_td-admin-username">${admin.Username__username}</td>
@@ -1666,8 +1666,7 @@ $(document).on('click', ".btn-remove-chapter", function(){
 });
 
 
-$(document).on('click', ".btn-remove-admin", function (event) {
-    var thisElement = $(this)
+function removeAdmin(thisElement){
     var user_id = thisElement.data('value');
     thisElement.html("Removing");
     $.ajax(
@@ -1696,6 +1695,15 @@ $(document).on('click', ".btn-remove-admin", function (event) {
             showSingleButtonAlert({ title: "Server Error", message: "Failed to remove the admin account.<br>Try Again!.", buttonText: "Okay" });
         }
     });
+}
+$(document).on('click', ".btn-remove-admin", function (event) {
+    var thisElement = $(this);
+    var username = thisElement.data('username');
+    var functionToExecute = function () {
+        removeAdmin(thisElement)
+    }
+    var message = `If you remove the admin (<b>${username}</b>); the admin account will be remove parmenently, and the admin can't log into the CMS further.`
+    twoButtonAlert({ message: message, buttonCloseText: 'Cancel', buttonOkayText: 'Confirm', functionName: functionToExecute })
 });
 
 
